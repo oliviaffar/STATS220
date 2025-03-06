@@ -1,6 +1,6 @@
 # STATS220
 
-This is my repo for STATS220 
+<h1>This is my repo for STATS220</h1>
 
 A little about me:
 
