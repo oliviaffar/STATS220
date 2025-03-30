@@ -1,0 +1,78 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+```
+
+```{css, include=FALSE}
+body {
+  color: Navy; 
+  background-color: White;
+}
+
+h2 {
+  font-weight: 2000
+  padding: 50px
+}
+
+h1 {
+  font-weight: 4000
+  padding: 100px
+}
+```
+
+# Instagram user behaviour
+
+For this dynamic report, I am analysing what my use of social media behaviour is on a specific platform, Instagram. For this analysis, I am taking dynamic aspects such as the category of ads, explore posts, primary use, and etc on the respective platform which varies each time I refresh or open the app.
+
+```{r}
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSAsEeOz_fSCpiUK_fm6yL2BLY41wH488WJenZHvclD3lRodQFASOXrElkoHjncIIZqPyBTD2NJsaPS/pub?output=csv")
+latest_data <- logged_data %>%
+  rename(hours_spent = 2,
+         primary_focus = 3,
+         ad_relevance = 4,
+         explore_category = 5,
+         explore_interest = 6)
+
+max_hours_spent <- latest_data$hours_spent %>% max()
+mean_ad_relevance <- latest_data$ad_relevance %>% mean()
+min_explore_interest <- latest_data$explore_interest %>% min()
+```
+
+
+## Dynamic comments
+
+```{r}
+paste("The maximum amount of hours spent on instagram is", max_hours_spent, "hours." )
+```
+
+This is the maximum amount of hours that I can spend on Instagram during the collection of data for this analysis, and I do this by using the max() function. The purpose of this is to track down how much time I have spent in a day on Instagram, so I can start assessing whether or not this is excessive for better time management.
+
+```{r}
+paste("the mean score of ads relevance according to my interest is", mean_ad_relevance, "out of 5.")
+```
+
+Above, is an output for the relevance of advertisements to my interests which often pops up when I look through Instagram stories or scroll down on my home page, with 1 being not relevant to 5 being very relevant. I have used the mean() function to extract an average estimate of this. The output above shows a fairly high score, implying that the app might have picked up an algorithm which assesses my interests based on the type of contents I interact with the most(like, comment, save, share).
+
+```{r}
+paste("The minimum score of how well-tailored my explore page is for the everey time the page is refreshed is", min_explore_interest, "out of 5")
+```
+The minimum score for well-tailoredness is 1, indicating content that is not well-tailored and maximum score of 5 indicating the contents are very well-tailored. The min() function has been used to assess what the minimum score of this is. Although the Explore page updates every time the app is reopened or refreshed, the types of content shown remain largely consistent. This is likely because Instagram curates the page based on the accounts we follow, assuming that we enjoy their content. As a result, the platform suggests more posts similar to those, shaping the Explore page accordingly.
+
+## Bar graphs
+```{r}
+ggplot(data = latest_data)+
+  geom_bar(aes(x = primary_focus),
+  fill = "#B49CBA")
+  
+ggplot(data = latest_data) +
+  geom_bar(aes(x = explore_category),
+  fill = "#D695BA")
+```
+
+
+
