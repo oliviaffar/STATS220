@@ -61,7 +61,7 @@ Above, is an output for the relevance of advertisements to my interests which of
 ```{r}
 paste("The minimum score of how well-tailored my explore page is for the everey time the page is refreshed is", min_explore_interest, "out of 5")
 ```
-The minimum score for well-tailoredness is 1, indicating content that is not well-tailored and maximum score of 5 indicating the contents are very well-tailored. The min() function has been used to assess what the minimum score of this is. Although the Explore page updates every time the app is reopened or refreshed, the types of content shown remain largely consistent. This is likely because Instagram curates the page based on the accounts we follow, assuming that we enjoy their content. As a result, the platform suggests more posts similar to those, shaping the Explore page accordingly.
+The minimum score for well-tailoredness is 1, indicating content that is not well-tailored and maximum score of 5 indicating the contents are very well-tailored. The min() function has been used to assess what the minimum score of this  is. Although the Explore page updates every time the app is reopened or refreshed, the types of content shown remain largely consistent. This is likely because Instagram curates the page based on the accounts we follow, assuming that we enjoy their content. As a result, the platform suggests more posts similar to those, shaping the Explore page accordingly.
 
 ## Bar graphs
 ```{r}
@@ -70,7 +70,7 @@ ggplot(data = latest_data)+
   fill = "#B49CBA")
   
 ggplot(data = latest_data) +
-  geom_bar(aes(x = explore_category),
+  geom_bar(aes(y = explore_category),
   fill = "#D695BA")
 ```
 
