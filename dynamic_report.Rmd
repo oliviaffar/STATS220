@@ -66,7 +66,7 @@ The minimum score for well-tailoredness is 1, indicating content that is not wel
 ## Bar graphs
 ```{r}
 ggplot(data = latest_data)+
-  geom_bar(aes(x = primary_focus),
+  geom_bar(aes(y = primary_focus),
   fill = "#B49CBA")
   
 ggplot(data = latest_data) +
